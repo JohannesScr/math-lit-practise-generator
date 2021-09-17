@@ -1,0 +1,11 @@
+# ignore caching
+/__pycache__
+
+# ignore testing
+
+
+# ignore generate pdfs
+/documents/*.pdf
+
+# environmental variables
+.env
