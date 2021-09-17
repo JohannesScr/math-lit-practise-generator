@@ -8,12 +8,12 @@ from pdflatex import PDFLaTeX
 log = getLogger(__name__)
 
 
-def generate_pdf(tex_string: str) -> (str, bytes):
+def generate_pdf(tex_string: str, filename: str) -> (str, bytes):
     """
     This function generates the PDF
     """
-    timestamp = datetime.strftime(datetime.now(), '%Y-%m-%d:%H:%M:%S')
-    filename = 'mathematics-literacy-practise-{}.pdf'.format(timestamp)
+    timestamp = datetime.strftime(datetime.now(), '%Y-%m-%d.%H.%M')
+    filename = '{}-{}.pdf'.format(filename, timestamp)
     file_path = './documents/{}'.format(filename)
     pdfl = PDFLaTeX.from_binarystring(
         bytes(tex_string, 'utf-8'),
@@ -40,7 +40,17 @@ def generate_template(template: str, data: dict) -> str:
     return tex_string
 
 
-def generate_data() -> dict:
+def generate_basic_add_sub_data(lower_limit: int, upper_limit: int) -> dict:
+    """
+    This function is to generate all the data for basic addition, subtraction
+    """
+    return {
+        'addition': [num(lower_limit, upper_limit) for _ in range(43)],
+        'subtraction': [num(lower_limit, upper_limit) for _ in range(43)]
+    }
+
+
+def generate_overview_data() -> dict:
     """
     This function is to generate all the random data for the file
     """

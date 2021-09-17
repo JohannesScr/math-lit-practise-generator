@@ -9,3 +9,6 @@
 
 # environmental variables
 .env
+
+# Pycharm
+.idea/
