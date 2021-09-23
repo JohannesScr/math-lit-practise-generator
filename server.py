@@ -64,7 +64,7 @@ def home():
                            'description': 'an overview of all the math lit questions'
                        },
                        {
-                           'url': '/overview',
+                           'url': '/basic',
                            'description': 'basic math lit arithmetic'
                        }
                    ])
