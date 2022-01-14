@@ -42,7 +42,8 @@ mail.init_app(app)
 def send_email(filename, pdf_bytes) -> (bool, str):
     try:
         msg = Message()
-        msg.recipients = ['anelisa.dul@gmail.com']
+        # msg.recipients = ['anelisa.dul@gmail.com']
+        msg.recipients = ['dev.scribs@gmail.com']
         msg.sender = ('No Reply', 'no-reply@gmail.com')
         msg.body = 'hello there'
         msg.html = '<b>Hello There</b>'
@@ -91,6 +92,7 @@ def create_basic_template():
         tex_string=tex_string, filename='mathlit-basic-arithmetic-practise'
     )
     x, err = send_email(filename=filename, pdf_bytes=pdf_bytes)
+    print(err)
     if x:
         return jsonify(message='Created template successfully')
     return jsonify({'error': err})
